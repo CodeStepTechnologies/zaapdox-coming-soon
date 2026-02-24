@@ -1,87 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Zaapdox — Coming Soon</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>
 
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #0f172a, #1e3a8a);
-      color: white;
-      text-align: center;
-      padding: 40px;
-    }
+const SUPABASE_URL = "wkymwlhrjgneqzcnqkvx";
+const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndreW13bGhyamduZXF6Y25xa3Z4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5NTAzMzgsImV4cCI6MjA4NzUyNjMzOH0.mMOE_rZdlVvC7-0mwc5KoUgWlj61oEezhwGaiiDDSUA";
 
-    h1 {
-      font-size: 36px;
-      margin-bottom: 10px;
-    }
+document.getElementById("waitlist-form").addEventListener("submit", async function(e) {
 
-    p {
-      font-size: 18px;
-      margin-bottom: 30px;
-    }
+  e.preventDefault();
 
-    form {
-      background: rgba(255,255,255,0.1);
-      padding: 20px;
-      border-radius: 10px;
-      max-width: 400px;
-      margin: auto;
-    }
+  const full_name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const phone = document.getElementById("phone").value;
+  const user_type = document.getElementById("user_type").value;
+  const city = document.getElementById("city").value;
 
-    input, select, button {
-      width: 100%;
-      padding: 10px;
-      margin-top: 10px;
-      border-radius: 5px;
-      border: none;
-    }
+  const response = await fetch(SUPABASE_URL + "/rest/v1/waitlist", {
 
-    button {
-      background: #3b82f6;
-      color: white;
-      font-weight: bold;
-      cursor: pointer;
-    }
+    method: "POST",
 
-    button:hover {
-      background: #2563eb;
-    }
-  </style>
-</head>
+    headers: {
+      "Content-Type": "application/json",
+      "apikey": SUPABASE_KEY,
+      "Authorization": "Bearer " + SUPABASE_KEY
+    },
 
-<body>
+    body: JSON.stringify({
+      full_name,
+      email,
+      phone,
+      user_type,
+      city
+    })
 
-  <h1>Zaapdox</h1>
+  });
 
-  <p>Modern Healthcare Infrastructure Platform — Coming Soon</p>
+  if(response.ok) {
 
-  <form id="waitlist-form">
+    document.getElementById("message").innerText =
+      "Registration successful.";
 
-    <input type="text" id="name" placeholder="Full Name" required>
+  } else {
 
-    <input type="email" id="email" placeholder="Email" required>
+    document.getElementById("message").innerText =
+      "Error. Try again.";
 
-    <input type="text" id="phone" placeholder="Phone Number">
+  }
 
-    <select id="user_type" required>
-      <option value="">Select Type</option>
-      <option value="doctor">Doctor</option>
-      <option value="lab">Lab Partner</option>
-      <option value="physiotherapist">Physiotherapist</option>
-      <option value="patient">Patient</option>
-    </select>
+});
 
-    <input type="text" id="city" placeholder="City">
-
-    <button type="submit">Join Early Access</button>
-
-  </form>
-
-  <p id="message"></p>
-
-</body>
-</html>
+</script>
