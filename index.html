@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Zaapdox — Coming Soon</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #0f172a, #1e3a8a);
+      color: white;
+      text-align: center;
+      padding: 40px;
+    }
+
+    h1 {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
+
+    form {
+      background: rgba(255,255,255,0.1);
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 400px;
+      margin: auto;
+    }
+
+    input, select, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 5px;
+      border: none;
+    }
+
+    button {
+      background: #3b82f6;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #2563eb;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Zaapdox</h1>
+
+  <p>Modern Healthcare Infrastructure Platform — Coming Soon</p>
+
+  <form id="waitlist-form">
+
+    <input type="text" id="name" placeholder="Full Name" required>
+
+    <input type="email" id="email" placeholder="Email" required>
+
+    <input type="text" id="phone" placeholder="Phone Number">
+
+    <select id="user_type" required>
+      <option value="">Select Type</option>
+      <option value="doctor">Doctor</option>
+      <option value="lab">Lab Partner</option>
+      <option value="physiotherapist">Physiotherapist</option>
+      <option value="patient">Patient</option>
+    </select>
+
+    <input type="text" id="city" placeholder="City">
+
+    <button type="submit">Join Early Access</button>
+
+  </form>
+
+  <p id="message"></p>
+
+</body>
+</html>
